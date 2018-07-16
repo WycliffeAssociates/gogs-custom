@@ -21,7 +21,6 @@ permissions:
     group: git
     mode: 644
 hooks:
-   AfterInstall:
+   ApplicationStart:
      - location: scripts/restart.sh
-     - runas: root
-
+       runas: root
