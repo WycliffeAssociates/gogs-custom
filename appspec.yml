@@ -1,0 +1,27 @@
+version: 0.0
+os: operating-system-name
+files:
+  - source: public
+    destination: /var/lib/gitea/custom/public
+  - source: templates
+    destination: /var/lib/gitea/custom/templates
+  - source: options
+    destination: /var/lib/gitea/custom/options
+permissions:
+  - object: /var/lib/gitea/custom/public
+    owner: ec2-user
+    group: git
+    mode: 644
+  - object: /var/lib/gitea/custom/templates
+    owner: ec2-user
+    group: git
+    mode: 644
+  - object: /var/lib/gitea/custom/options
+    owner: ec2-user
+    group: git
+    mode: 644
+hooks:
+   AfterInstall:
+     - location: restart.sh
+     - runas: root
+
